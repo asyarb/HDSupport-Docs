@@ -3,7 +3,7 @@ title: Project Structure
 order: 2
 ---
 
-###### An overview of the folder structure of the HDSupport repository.
+###### The folder structure of the HDSupport repository.
 
 <section id="intro" aria-label="Intro to the repo's folder structure.">
 
@@ -43,13 +43,13 @@ For the project to build, **these files must exist with exact filenames:**
 
 ## 💾 Server Folder
 
-### css/
+#### css/
 
 This folder can contain any CSS to style any pages that are rendered entirely by the server, such as .php files and .html files. Currently, there is a `timesheet_styles.css` file that is used to compose the generated timesheet for printing.
 
 Generally, it is not recommended to use this as much as possible since we're utilizing CSS-in-JS which will be covered later.
 
-### database/
+#### database/
 
 This folder contains the .php files to establish our web-server's connection to our mySQL database. You should only need to fill in the following variables with the appropriate information:
 
@@ -61,11 +61,11 @@ $pass = ''; // your localhost user password, you should know this for production
 
 There is a production and dev version of these files for your convenience.
 
-### routes/
+#### routes/
 
-This folder contains the PHP "_endpoints_" that the client can call. You can read more information about this in [**Understanding the Backend.**](/backend/)
+This folder contains the PHP "_endpoints_" that the client can call. You can read more information about this in [**Understanding the Backend.**](/understanding-the-backend/)
 
-### templates/
+#### templates/
 
 This folder contains the plain text email template files for the Email Generator tool.
 
@@ -77,23 +77,25 @@ This folder contains the plain text email template files for the Email Generator
 
 ## 💻 Client folder (/src)
 
-### components/
+#### components/
 
-Contains almost all of the React component JavaScript files. More information on this can be found in [**Understanding the Frontend.**](/frontend/)
+Contains almost all of the React component JavaScript files. More information on this can be found in [**Understanding the Frontend.**](/understanding-the-frontend/)
 
-### css/
+#### css/
 
-Contains base and global style definitions for the application. Utilizes CSS custom properties for easy variable remembering and dynamic element coloring with styled-components. This generally shouldn't need to be modified, but feel free to do so. Keep in mind that changes in here may change several components and pages at once, so tread carefully.
+Contains base and global style definitions for the application. Utilizes CSS custom properties for easy value re-use and dynamic element coloring with CSS-in-JS. This generally shouldn't need to be modified, but feel free to do so.
 
-### images/
+Keep in mind that changes in here may change several components and pages at once, so tread carefully.
+
+#### images/
 
 Contains several SVG files categorized into approrpriate sub-directories that correspond with the components that use them. Since our Webpack config with Create-React-App utilizes 'SVGR', we can import SVGs as components instead of making HTTP requests or in-lining them.
 
-### App.js
+#### App.js
 
-Base React component that can be considered the "starting point" for the application. Contains the main site router and the Header component that stays rendered on all pages.
+Base React component that can be considered the "starting point" for the application. Contains the main site router and the Header component that stays rendered on all pages. More information can be found in: [**Understanding the Frontend.**](/understanding-the-frontend/)
 
-### index.js
+#### index.js
 
 Webpack entry point. Required to build the client.
 
@@ -107,11 +109,11 @@ You should only really alter the service worker registration line shown below, b
 serviceWorker.register();
 ```
 
-### LayoutContext.js
+#### LayoutContext.js
 
 A React component that implements the Context API. Holds important application level state about the current user logged in.
 
-Placed at the top of the component tree. More information can be found in: [**Understanding the Frontend.**](/frontend/)
+Placed at the top of the component tree. More information can be found in: [**Understanding the Frontend.**](/understanding-the-frontend/)
 
 </section>
 
@@ -123,7 +125,7 @@ Placed at the top of the component tree. More information can be found in: [**Un
 
 If you place a file into the `public` folder, it will **not** be processed by Webpack. Instead, it is copied into the build folder untouched.
 
-### index.html
+#### index.html
 
 Template file that React _hydrates_ after the main JavaScript bundle is loaded. Required for Webpack to build the client. Generally, React hydrates the following DOM node:
 
@@ -148,5 +150,29 @@ Only files inside `public` can be used from `public/index.html`. To reference as
 <section id="other-files" aria-label="Other Files.">
 
 ## 📂 Other Files
+
+#### .gitignore
+
+Specifies files that will be ignored when using git. Structured for a typical NodeJS project.
+
+#### .prettierrc
+
+Prettier config file which allows for automatic code formatting. See [Prettier's website](https://prettier.io/) for more info. The current config utilizes trailing commas for object syntax, which means you can have the following in a JavaScript object:
+
+```javascript
+state = {
+    firstName: 'John',
+    lastName: 'Doe',
+    Address: {
+        Street: '2520 Correa Rd',
+        City: 'Honolulu',
+        Zip: 96822,
+    },
+};
+```
+
+#### .eslint.json
+
+ESLint config file which enables local ESLint for in-editor use. Feel free to edit or discard, as Create-React-App has a built-in ESLint config as well.
 
 </section>

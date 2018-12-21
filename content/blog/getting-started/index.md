@@ -15,7 +15,7 @@ The latest version of **HDSupport** was currently developed with the following t
 -   **React** for the view layer/front-end. This means knowledge with NodeJS, its package manager NPM, and modern Javascript (ES6+ syntax) is highly recommended. [Create-React-App](https://github.com/facebook/create-react-app) was utilized to scaffold the client.
 -   **HTML/SCSS**. A strong foundation in semantic markup and [SCSS](https://sass-lang.com/) concepts is recommended. SCSS is particularly important since our CSS-in-JSS solution borrows a lot of composition patterns from SCSS.
 
-These docs assume familiarity with the above technologies. If you plan to continue development or add features to **HDSupport**, it is highly recommended that you become familiar with all of the above before beginning development.
+These docs assume familiarity with the above technologies in addition to **Git**. If you plan to continue development or add features to **HDSupport**, it is highly recommended that you become familiar with all of the above before starting.
 
 > #### What if I don't want to use React or SCSS?
 >
@@ -29,7 +29,7 @@ These docs assume familiarity with the above technologies. If you plan to contin
 
 ## 🚀 Development Environment Setup
 
-To setup a development environment for **HDSupport**, there are a few pre-requisites we need to install.
+To setup your development environment for **HDSupport**, there are a few pre-requisites we need to install.
 
 1. Install [**NodeJS**](https://nodejs.org/en/). You can install either the LTS or current version. Either is fine, just stick to a version in development.
 2. Install a web-server solution like [**XAMPP**](https://www.apachefriends.org/index.html) or [**MAMP**](https://www.mamp.info/en/). This guide is tailored for use with XAMPP, but MAMP should work just as well. You can alternatively setup your own Apache, MariaDB/MySQL and PHP web server if you want, but I don't recommend doing so.
@@ -37,30 +37,30 @@ To setup a development environment for **HDSupport**, there are a few pre-requis
 
 ### Setting Up The Backend
 
-4. Export a copy of the HDSupport MySQL database.
-    1. Log-in to HDSupport.
+4. **Export** a copy of the HDSupport MySQL database.
+    1. **Log-in** to HDSupport.
     2. Navigate to **Administration** -> **PHP MyAdmin**.
-    3. Log-in with credentials. (If you don't know these, ask around)
+    3. **Log-in** with credentials. (If you don't know these, ask around)
     4. Expand the left-hand collapse menu to: **itshdsupport_p**
     5. Click on **Export** in the top menu.
     6. Leave the options as their default (or configure it if you know what you're doing) and click **Go**. This should download a .sql file you will import later.
 5. Navigate to your **PHP MyAdmin** or equivalent console within MAMP.
-6. Create an empty database. You can leave the encoding/collation as 'utf8-general-ci'.
-7. Define a user account. This user should generally have all global privileges.
-8. Import the .sql file we exported in step 3. You should see the full DB structure in a few minutes.
+6. **Create an empty database**. You can leave the encoding/collation as 'utf8-general-ci'.
+7. **Define a user account**. This user should generally have all global privileges.
+8. **Import** the .sql file we exported in step 3. You should see the full DB structure in a few minutes.
     > #### Having trouble with importing?
     >
     > You may need to change the maximum allowed memory a script can utilize to successfully import the .sql file. You can change this in your php.ini file in your Apache config.
-9. Update the **"connect_db.php"** file within **"./server/database"** to contain the appropriate information you specified in steps 5 and 6.
-10. Update the **"do_auth.php"** file within **"./server/routes"**. Set your UH Number and Username in the appropriate `$_SESSION` variable.
-11. Create a directory within **htdocs** (for XAMPP) that will serve your server files. I would recommend something like: **"hdsupport-server"**.
-12. Copy the contents of **./server** to the htdocs directory you specified in step 11.
+9. Update the `connect_db.php` file within `./server/database` to contain the appropriate information you specified in steps 5 and 6.
+10. Update the `do_auth.php` file within `./server/routes`. Set your UH Number and Username in the appropriate `$_SESSION` variable.
+11. Create a directory within `htdocs` (for XAMPP) that will serve your server files. I would recommend something like: `hdsupport-server`.
+12. Copy the contents of `./server` to the htdocs directory you specified in step 11.
 
 ### Setting Up The Frontend
 
 13. Run `npm install` in the root directory. This should take a few minutes.
-14. Update the **"package.json"** file within the root directory you cloned the git repository to and change the `proxy` field to point to the **/routes** folder you copied over in step 12. You should see a sample of this already present.
-15. Create an **'env.development'** file in the root directory with the following contents:
+14. Update the `package.json` file within the root directory and change the `proxy` field to point to the `/routes` folder you copied over in step 12. You should see a sample of this already present.
+15. Create an `env.development` file in the root directory with the following contents:
 
 ```javascript
 REACT_APP_SLACK_TOKEN=
@@ -70,7 +70,7 @@ REACT_APP_DB_SERVER=
 
 Fill in the information with the appropriate API token and announcement channel ID from the Help Desk Slack. Leave _REACT-APP-DB-SERVER_ blank for development since we'll be proxying our requests instead.
 
-You can get the Slack Token from [**Slack's API**](https://api.slack.com/apps) by clicking on _Announcement Handler_ -> _OAuth & Permissions_ -> _OAuth Access Token_. The channel ID for #announcements is: **C4UFGG7QT**
+You can get the Slack Token from [**Slack's API**](https://api.slack.com/apps) by clicking on _Announcement Handler_ -> _OAuth & Permissions_ -> _OAuth Access Token_. The channel ID for _#announcements_ is: **C4UFGG7QT**.
 
 16. Start the development server by running `npm start` in the root directory. You can access the dev server via [**localhost:3000.**](http://localhost:3000)
 17. (_**Optional but recommended**_) Setup ESLint with the 'react' plugin, 'babel-eslint' parser and 'react-app' extension.

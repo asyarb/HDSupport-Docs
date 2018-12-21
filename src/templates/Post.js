@@ -62,7 +62,7 @@ const Content = styled.article`
     }
 
     h4 {
-        font-size: 1.75rem;
+        font-size: 2.25rem;
     }
 
     h6 {
@@ -86,10 +86,10 @@ const Content = styled.article`
         padding-left: 2em;
         line-height: 1.7;
         margin: 1em 0;
-        font-size: 1.6rem;
+        font-size: 1.7rem;
 
         > li {
-            margin: 1.5em 0;
+            margin: 1em 0;
 
             ul {
                 li {
@@ -106,7 +106,7 @@ const Content = styled.article`
         font-size: 1.7rem;
 
         > li {
-            margin: 1.5em 0;
+            margin: 1em 0;
         }
     }
 
