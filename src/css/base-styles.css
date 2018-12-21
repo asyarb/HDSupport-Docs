@@ -1,7 +1,9 @@
 :root {
     --blue: #61dafb;
+    --dark-blue: #43b4d3;
     --black: rgb(40, 44, 52);
     --white: #fff;
+    --grey: #6b7c93;
 }
 
 html {
@@ -39,4 +41,28 @@ a {
     color: inherit;
     text-decoration: none;
     font-weight: inherit;
+}
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    border: 2px solid #fff;
+}
+
+::selection {
+    background-color: var(--dark-blue);
+    color: var(--white);
 }

@@ -7,15 +7,41 @@ import '../css/base-styles.css';
 import '../css/prism.css';
 
 class Layout extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            sidebarFocus: -1,
+        };
+    }
+
+    changeSidebarFocus = index => {
+        this.setState({
+            sidebarFocus: index,
+        });
+    };
+
+    resetFocus = () => {
+        this.setState({
+            sidebarFocus: -1,
+        });
+    };
+
     render() {
         const { children } = this.props;
+        const { sidebarFocus } = this.state;
 
         return (
             <PageContainer>
-                <Header siteTitle="HDSupport Docs" />
+                <Header
+                    siteTitle="HDSupport Docs"
+                    resetFocus={this.resetFocus}
+                />
                 <Main>
                     <Content>{children}</Content>
-                    <Sidebar />
+                    <Sidebar
+                        focused={sidebarFocus}
+                        handleChange={this.changeSidebarFocus}
+                    />
                 </Main>
             </PageContainer>
         );

@@ -1,34 +1,25 @@
-import React from 'react';
-import { graphql } from 'gatsby';
+import React, { Component } from 'react';
+import styled from '@emotion/styled';
 
-import Layout from '../components/Layout';
 import SEO from '../components/seo';
 
-class Index extends React.Component {
+class Index extends Component {
     render() {
-        const { data } = this.props;
-        const siteTitle = data.site.siteMetadata.title;
-
         return (
-            <Layout location={this.props.location} title={siteTitle}>
+            <React.Fragment>
                 <SEO
                     title="Home"
                     keywords={['Docs', 'gatsby', 'javascript', 'react']}
                 />
-                <h1>Home</h1>
-            </Layout>
+                <Heading>Home</Heading>
+            </React.Fragment>
         );
     }
 }
 
 export default Index;
 
-export const pageQuery = graphql`
-    query {
-        site {
-            siteMetadata {
-                title
-            }
-        }
-    }
+const Heading = styled.h1`
+    margin: 12rem 0 0.85em;
+    font-size: 5.25rem;
 `;

@@ -10,6 +10,12 @@ module.exports = {
     },
     plugins: [
         {
+            resolve: 'gatsby-plugin-layout',
+            options: {
+                component: require.resolve('./src/components/Layout'),
+            },
+        },
+        {
             resolve: `gatsby-source-filesystem`,
             options: {
                 path: `${__dirname}/content/blog`,
@@ -41,7 +47,6 @@ module.exports = {
         },
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
-        `gatsby-plugin-feed`,
         {
             resolve: `gatsby-plugin-manifest`,
             options: {

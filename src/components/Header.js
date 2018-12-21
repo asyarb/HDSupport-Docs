@@ -7,26 +7,32 @@ import { ReactComponent as ITSLogo } from '../images/its-logo.svg';
 
 import Container from './Container';
 
-const Header = ({ siteTitle }) => {
+const Header = ({ siteTitle, resetFocus }) => {
     return (
         <HeaderEl>
             <Container>
                 <Nav>
                     <Logo>
-                        <Link to="/">
+                        <Link to="/" onClick={resetFocus}>
                             <ITSLogo />
                             <span>{siteTitle}</span>
                         </Link>
                     </Logo>
                     <ul>
                         <li>
-                            <Link to="getting-started">Docs</Link>
+                            <Link to="getting-started" onClick={resetFocus}>
+                                Docs
+                            </Link>
                         </li>
                         <li>
-                            <Link to="build">Build for Production</Link>
+                            <Link to="build" onClick={resetFocus}>
+                                Build for Production
+                            </Link>
                         </li>
                         <li>
-                            <Link to="contact">Contact</Link>
+                            <Link to="contact" onClick={resetFocus}>
+                                Contact
+                            </Link>
                         </li>
                     </ul>
                 </Nav>
@@ -37,6 +43,7 @@ const Header = ({ siteTitle }) => {
 
 Header.propTypes = {
     siteTitle: PropTypes.string,
+    resetFocus: PropTypes.func,
 };
 
 Header.defaultProps = {

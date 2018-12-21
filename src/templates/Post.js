@@ -1,24 +1,21 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import styled from '@emotion/styled';
-
-import Layout from '../components/Layout';
 import SEO from '../components/seo';
 
 class Post extends React.Component {
     render() {
         const post = this.props.data.markdownRemark;
-        const siteTitle = this.props.data.site.siteMetadata.title;
 
         return (
-            <Layout location={this.props.location} title={siteTitle}>
+            <React.Fragment>
                 <SEO
                     title={post.frontmatter.title}
                     description={post.excerpt}
                 />
                 <Heading>{post.frontmatter.title}</Heading>
                 <Content dangerouslySetInnerHTML={{ __html: post.html }} />
-            </Layout>
+            </React.Fragment>
         );
     }
 }
@@ -39,7 +36,6 @@ export const pageQuery = graphql`
             html
             frontmatter {
                 title
-                date(formatString: "MMMM DD, YYYY")
             }
         }
     }
@@ -69,16 +65,70 @@ const Content = styled.article`
         font-size: 1.75rem;
     }
 
+    h6 {
+        font-size: 2.4rem;
+        font-weight: 300;
+        color: var(--grey);
+        margin: 1.35em 0;
+
+        @media (max-width: 900px) {
+            font-size: 1.8rem;
+        }
+    }
+
     p {
-        font-size: 1.8rem;
+        font-size: 1.7rem;
         line-height: 1.8;
     }
 
     ul {
         list-style: disc;
         padding-left: 2em;
-        line-height: 1.5;
+        line-height: 1.7;
+        margin: 1em 0;
+        font-size: 1.6rem;
+
+        > li {
+            margin: 1.5em 0;
+
+            ul {
+                li {
+                    margin: 0.75em 0;
+                }
+            }
+        }
+    }
+
+    ol {
+        padding-left: 2em;
+        line-height: 1.6;
         margin: 1em 0;
         font-size: 1.7rem;
+
+        > li {
+            margin: 1.5em 0;
+        }
+    }
+
+    a {
+        transition: background-color 0.25s ease;
+        background-color: rgba(187, 239, 253, 0.3);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            background-color: rgba(187, 239, 253, 0.8);
+        }
+    }
+
+    blockquote {
+        background-color: rgba(255, 229, 100, 0.3);
+        border-left: 9px solid #ffe564;
+        padding: 20px 45px 20px 26px;
+        margin: 20px -20px 30px;
+    }
+
+    hr {
+        border-top: 1px solid #ececec;
+        margin: 5rem auto;
     }
 `;
