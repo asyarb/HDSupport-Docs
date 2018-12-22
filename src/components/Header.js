@@ -65,7 +65,7 @@ const HeaderEl = styled.header`
 const Logo = styled.div`
     color: var(--white);
     font-size: 2rem;
-    font-weight: bold;
+    font-weight: 600;
 
     a {
         display: flex;

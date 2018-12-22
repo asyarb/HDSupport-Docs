@@ -67,13 +67,16 @@ WHERE username = 'someuser'
 Typically, you would compose such a statement in PHP via:
 
 ```php
-// $db is our database connection defined somewhere above
+<?php
 
+// $db is our database connection defined somewhere above
 $query = "SELECT * FROM users WHERE username = '$_GET["username"]'";
 $result = mysqli_query($db, $query);
 $row = mysqli_fetch_assoc($result);
 
 $userInfo = $row;
+
+?>
 ```
 
 Unfortunately, this is open to SQL injection and other exploits, specifically where we use `$_GET` to specify the username. (This is actually how we were interacting with our DB previously. 🤔)
@@ -81,11 +84,15 @@ Unfortunately, this is open to SQL injection and other exploits, specifically wh
 Below is an example of the same statement via prepared statements:
 
 ```php
+<?php
+
 $stmt = $db->prepare("SELECT * FROM users WHERE username = ?");
 $stmt->bind_param("s", $_GET["username"]);
 $stmt->execute();
 
 $userInfo = $stmt->get_result()->fetch_assoc();
+
+?>
 ```
 
 Notice the `bind_param` on the line 2 that specifies the type as well as the variable to replace the ? on line 1. In short, this tells our SQL server a few things in this sequence:
@@ -103,5 +110,39 @@ For more information on prepared statements and examples for each type of common
 <section id="creating-routes" aria-label="Creating A New Route">
 
 ## Creating Routes
+
+Creating a new route is pretty straightforward. You can base your new route off any of the existing routes that exists in any of the other PHP files, or you can follow along the example below.
+
+##### Create A New PHP File
+
+The filename of the route will be what is called in the client, so be sure to give it a descriptive name of the data it's returning. If you are getting a user's full name, a filename like `get-fullname.php` would suffice.
+
+Initialize the file with the following boilerplate:
+
+```php
+<?php
+
+session_start();
+include "./do_auth.php";
+
+function getFullname($db, $uuid) {
+    // [...]
+    // prepared statement...
+
+    return json_encode($jsonToReturn);
+}
+
+echo getFullname($mysqli, $_GET["uuid"]);
+
+?>
+```
+
+If you are writing a POST request, be sure to change your `$_GET` variables to `$_POST` and include the following line above your `echo` statement.
+
+```php
+$_POST = json_decode(file_get_contents("php://input"), true);
+```
+
+We need to include this snippet since `axios` encodes the HTTP request with a `Content-Type` of `application/json`. Alternatively, you can specify a different `Content-Type` in the client, but I find this to be easier.
 
 </section>
