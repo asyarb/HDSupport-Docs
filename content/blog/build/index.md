@@ -1,4 +1,4 @@
 ---
-title: Making a Production Build
+title: Creating a Production Build
 order: 9
 ---

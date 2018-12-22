@@ -63,7 +63,7 @@ const HeaderEl = styled.header`
 `;
 
 const Logo = styled.div`
-    color: var(--blue);
+    color: var(--white);
     font-size: 2rem;
     font-weight: bold;
 

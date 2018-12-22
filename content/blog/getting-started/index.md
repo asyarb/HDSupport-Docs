@@ -17,9 +17,9 @@ The latest version of **HDSupport** was currently developed with the following t
 
 These docs assume familiarity with the above technologies in addition to **Git**. If you plan to continue development or add features to **HDSupport**, it is highly recommended that you become familiar with all of the above before starting.
 
-> #### What if I don't want to use React or SCSS?
+> #### What if I don't want to use React?
 >
-> It is not technically a requirement to utilize React or SCSS. Additional pages can be added via standalone PHP/HTML and normal CSS files if you prefer. However, keep in mind you would lose the benefit SPAs provide such as client-side routing, state management, scoped CSS selectors, and many others.
+> You don't have to! It's technically not a requirement to utilize React. You can extend HDSupport using any frontend tooling that you prefer, even standalone static PHP/HTML + CSS files. However, keep in mind you would lose the benefit SPAs provide such as client-side routing, state management, scoped CSS selectors, and many others.
 
 </section>
 
