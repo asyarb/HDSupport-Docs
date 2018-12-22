@@ -65,6 +65,10 @@ const Content = styled.article`
         font-size: 2.25rem;
     }
 
+    h5 {
+        font-size: 1.85rem;
+    }
+
     h6 {
         font-size: 2.4rem;
         font-weight: 300;

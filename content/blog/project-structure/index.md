@@ -26,8 +26,8 @@ hdsupport/
         index.js
         ...
     package.json
-    README.md
     .gitignore
+    .eslint.json
 ```
 
 For the project to build, **these files must exist with exact filenames:**
@@ -173,6 +173,8 @@ state = {
 
 #### .eslint.json
 
-ESLint config file which enables local ESLint for in-editor use. Feel free to edit or discard, as Create-React-App has a built-in ESLint config as well.
+ESLint config file which enables local ESLint for in-editor use. See [ESLint's website](https://eslint.org/) for more info.
+
+Feel free to edit or discard, as Create-React-App has a built-in ESLint config as well.
 
 </section>
