@@ -74,6 +74,7 @@ const Content = styled.article`
         font-weight: 300;
         color: var(--grey);
         margin: 1.35em 0;
+        line-height: 1.5;
 
         @media (max-width: 900px) {
             font-size: 1.8rem;
@@ -129,6 +130,15 @@ const Content = styled.article`
         border-left: 9px solid #ffe564;
         padding: 20px 45px 20px 26px;
         margin: 20px -20px 30px;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 0.5em 0;
+        }
     }
 
     hr {

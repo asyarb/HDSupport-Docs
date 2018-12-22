@@ -99,6 +99,8 @@ Base React component that can be considered the "starting point" for the applica
 
 Webpack entry point. Required to build the client.
 
+> ##### Warning!
+>
 > You generally **_should not_** touch this file. Doing so will **_probably break_** the app. We wrap our LayoutContext component in here around the App component for application level state that **_several_** components need to work.
 
 You should only really alter the service worker registration line shown below, but even then, you probably shouldn't.

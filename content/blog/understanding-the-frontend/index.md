@@ -40,6 +40,8 @@ Right before my end of development for HDSupport, React 16.7 was released. Since
 
 Our React frontend was bootstrapped with [Create-React-App](https://github.com/facebook/create-react-app). If you're unfamiliar, Create-React-App (CRA) provides a solid Webpack configuration and flexible development environment for deploying React apps. Because we use CRA, **_all_** of [their documentation](https://facebook.github.io/create-react-app/docs/documentation-intro) applies for this project. It's recommended to give it a read if you haven't used it before.
 
+> ##### Heads Up!
+>
 > Moving forward, it's assumed you are familiar with both CRA's and React's official documentation and modern JavaScript.
 
 #### React "Advanced" Concepts Used

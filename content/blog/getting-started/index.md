@@ -17,7 +17,7 @@ The latest version of **HDSupport** was currently developed with the following t
 
 These docs assume familiarity with the above technologies in addition to **Git**. If you plan to continue development or add features to **HDSupport**, it is highly recommended that you become familiar with all of the above before starting.
 
-> #### What if I don't want to use React?
+> ##### What if I don't want to use React?
 >
 > You don't have to! It's technically not a requirement to utilize React. You can extend HDSupport using any frontend tooling that you prefer, even standalone static PHP/HTML + CSS files. However, keep in mind you would lose the benefit SPAs provide such as client-side routing, state management, scoped CSS selectors, and many others.
 
@@ -48,7 +48,7 @@ To setup your development environment for **HDSupport**, there are a few pre-req
 6. **Create an empty database**. You can leave the encoding/collation as 'utf8-general-ci'.
 7. **Define a user account**. This user should generally have all global privileges.
 8. **Import** the .sql file we exported in step 3. You should see the full DB structure in a few minutes.
-    > #### Having trouble with importing?
+    > ##### Having trouble with importing?
     >
     > You may need to change the maximum allowed memory a script can utilize to successfully import the .sql file. You can change this in your php.ini file in your Apache config.
 9. Update the `connect_db.php` file within `./server/database` to contain the appropriate information you specified in steps 5 and 6.
