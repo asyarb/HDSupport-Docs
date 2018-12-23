@@ -84,10 +84,9 @@ class Sidebar extends Component {
                                             <StyledLink
                                                 key={index}
                                                 to={edge.node.fields.slug}
-                                                focused={
-                                                    pathname ===
+                                                focused={pathname.includes(
                                                     edge.node.fields.slug
-                                                }
+                                                )}
                                                 onClick={this.handleLinkClick}
                                             >
                                                 {edge.node.frontmatter.title}
