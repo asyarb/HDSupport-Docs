@@ -74,12 +74,21 @@ const Logo = styled.div`
 const Nav = styled.nav`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 20px 0;
     font-size: 1.7rem;
+
+    @media (max-width: 1100px) {
+        padding: 15px 0;
+    }
 
     ul {
         display: flex;
         list-style: none;
+
+        @media (max-width: 750px) {
+            display: none;
+        }
 
         li {
             padding: 0 20px;

@@ -10,13 +10,13 @@ order: 4
 While most of the heavy-lifting of HDSupport was offloaded from PHP and onto the React client, we still need some server-side logic and code to handle interactions with our mySQL database. **Before beginning development on HDSupport's backend you shoud posses:**
 
 -   Some understanding of general PHP syntax.
--   A basic understanding of [REST](https://developer.mozilla.org/en-US/docs/Glossary/REST) and [JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) objects.
+-   A basic understanding of [REST APIs](https://developer.mozilla.org/en-US/docs/Glossary/REST) and [JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON).
 -   A familiarity with basic [SQL](https://www.w3schools.com/sql/).
 -   Know the benefits and concepts of [prepared statements](http://php.net/manual/en/mysqli.quickstart.prepared-statements.php).
 
 > ##### Heads up!
 >
-> From this point onward, it's assumed you are relatively familiar with PHP, JSON objects, and basic SQL statements.
+> From this point onward, it's assumed you are relatively familiar with all of the above concepts in addition to High Order Array functions in JavaScript.
 
 </section>
 
@@ -27,6 +27,16 @@ While most of the heavy-lifting of HDSupport was offloaded from PHP and onto the
 ## Architecture
 
 Since our frontend was written in React, it was decided to create a **JSON "REST"-esque API** with PHP. By using JSONs (and Arrays of JSON), we can utilize many of the Higher Order Array and Object manipulation functions in JavaScript to easily display backend data.
+
+```jsx
+render() {
+    return (
+        <div>
+            {databaseArray.map(item => <div key={item.id}>{item.someData}</div>)}
+        </div>
+    )
+}
+```
 
 Effectively, this "REST" API allows our React components to query any of the PHP files/endpoints for exactly the data they need at runtime. (non-blocking!) You can think of each PHP file as a different "route" (hence, being located in `./server/routes` ) that returns JSON encoded data from our database. The `json_encode` function from the [PHP library](http://php.net/manual/en/function.json-encode.php) was used to accomplish this.
 
@@ -45,6 +55,8 @@ The backend of HDSupport was developed with [**PHP 7**](http://php.net/manual/en
 Upgrading to PHP 7 would have removed the deprecated [mysql](http://php.net/manual/en/book.mysql.php) extension that HDSupport was currently utilizing, requiring us to rewrite our queries to [mysqli](http://php.net/manual/en/book.mysqli.php) or [PDO](http://php.net/manual/en/ref.pdo-mysql.php). Without doing so, our app would have been completely disfunctional.
 
 [**mysqli**](http://php.net/manual/en/book.mysqli.php) was chosen to be the mySQL driver of choice for HDSupport due to it's similar syntax to the [mysql](http://php.net/manual/en/book.mysql.php) extension, ease of setup, when compared to [PDO](http://php.net/manual/en/ref.pdo-mysql.php) and support for prepared statements.
+
+We setup our mysqli database connection in `./server/database/connect_db.php`. This ties our connection to a global PHP variable called `$mysqli`. For the most part, we can just pass it to functions as expected. However, due to the way PHP handles variable scoping in nested functions, there are some cases we need to use the `$GLOBALS['mysqli']` style instead. You'll see this in some of our timesheet helper functions.
 
 </section>
 
@@ -117,7 +129,7 @@ Creating a new route is pretty straightforward. You can base your new route off 
 
 The filename of the route will be what is called in the client, so be sure to give it a descriptive name of the data it's returning. If you are getting a user's full name, a filename like `get-fullname.php` would suffice.
 
-Initialize the file with the following boilerplate:
+A `get-fullname.php` file's boilerplate would look something like this. Feel free to alter it to fit your new route as desired.
 
 ```php
 <?php
@@ -143,6 +155,6 @@ If you are writing a POST request, be sure to change your `$_GET` variables to `
 $_POST = json_decode(file_get_contents("php://input"), true);
 ```
 
-We need to include this snippet since `axios` encodes the HTTP request with a `Content-Type` of `application/json`. Alternatively, you can specify a different `Content-Type` in the client, but I find this to be easier.
+We need to include this snippet since `axios` encodes the HTTP request with a `Content-Type` of `application/json`. Alternatively, you can specify a different `Content-Type` like `application/x-www-form-urlencoded` or `multipart/form-data` in the request headers sent from the client.
 
 </section>

@@ -11,6 +11,12 @@ html {
     font-size: 10px;
 }
 
+@media (max-width: 750px) {
+    html {
+        font-size: 9.5px;
+    }
+}
+
 *,
 *:before,
 *:after {

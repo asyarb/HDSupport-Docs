@@ -8,7 +8,10 @@ import '../css/prism.css';
 
 class Layout extends Component {
     render() {
-        const { children } = this.props;
+        const {
+            children,
+            location: { pathname },
+        } = this.props;
 
         return (
             <PageContainer>
@@ -18,7 +21,7 @@ class Layout extends Component {
                 />
                 <Main>
                     <Content>{children}</Content>
-                    <Sidebar />
+                    <Sidebar pathname={pathname} />
                 </Main>
             </PageContainer>
         );
@@ -35,14 +38,18 @@ const PageContainer = styled.div`
 
 const Main = styled.main`
     display: grid;
-    grid-template-columns: 1fr 0.5fr;
+    grid-template-columns: 1fr 0.4fr;
     grid-column-gap: 20px;
     min-height: 100vh;
+
+    @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+    }
 `;
 
 const Content = styled.div`
     margin-left: auto;
-    max-width: 930px;
-    padding: 0 30px;
+    max-width: 1020px;
+    padding: 0 20px;
     width: 100%;
 `;

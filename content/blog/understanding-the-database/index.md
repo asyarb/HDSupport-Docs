@@ -47,6 +47,46 @@ Used `uid` as the Primary/Candidate key. Stores the roles that a given user has 
 
 Stores information regarding staff and student outages (sick, vacation, requests). The information on this table is used to populate the outages list on the front page.
 
-Used `sid` as the Primary/Candidate key. Also uses `uid` to identify rows to users.
+Uses `sid` as the Primary/Candidate key. Also uses `uid` to identify rows to users.
+
+#### clock
+
+Stores information for student clock-ins. Utilizes epoch/unix timestamps to record when the clock-in/out occurred.
+
+Uses `clid` as the Primary/Candidate key. Also uses `uid` to identify rows to users.
+
+#### log
+
+Another table that stores information for student clock-ins. Utilizes `month`, `day`, `dow`, `year`, `hour`, `min` and `ampm` fields to record when the clock-in occurred.
+
+Uses `logid` as the Primary/Candidate key. Uses `username` to identify rows to users.
+
+</section>
+
+---
+
+<section id="schedules" aria-label="Tables relating to scheduling/timesheets">
+
+## Tables for Timesheets
+
+Detailed below will be an overview of tables used for generating student timesheets.
+
+#### exceptions
+
+Stores data that _overrides_ (more specifically, takes priority when calculating timesheets) clock-in data for a specified date. Only one set of exceptions can exist for a username on a given date. Each set of exceptions can override a maximum of 6 clock-ins/outs for that day.
+
+Uses `eid` as the Primary/Candidate key. Uses `username` to identify rows to users. `date_tag`, which is in _M/D/YYYY_, should also be distinct for any given `username`.
+
+#### wwexceptions
+
+Stores data that signals to our timesheet functions which weeks students are allowed to work 40 hours instead of the usual 20. A week is denoted by the epoch/unix timestamp of the starting Sunday of that week at 10 AM HST.
+
+Uses `date` as the Primary/Candidate key.
+
+#### holidays
+
+Stores data that signals to our timesheet functions which days students need to have their worked hours calculated for holiday overtime. A day is denoted by the epoch/unix timestamp of that particular day at 10 AM HST.
+
+Uses `date` as the Primary/Candidate key.
 
 </section>

@@ -212,6 +212,6 @@ Keep in mind that `<Link />` components will also need to have the same prefix a
 
 Located within `./src/components`, `<Spinner />` is a loading indicator you can re-use anywhere you know a loading state may take a long period of time such as when fetching data from Slack's API or a large amount of data from our backend.
 
-`<Spinner />` takes two props, `size` and `margin` and `fullscreen`. `size` and `margin` are self descriptive, but `fullscreen` is a boolean that allows you to specify if the loader will take up the fullscreen width and height of the page. This is particularly useful if you plan on implementing lazy loading for routes, need a global fallback for a `<Suspense />` component high in the component tree, or just need to wait until everything is loaded before displaying a component.
+`<Spinner />` takes two props, `size` and `margin` and `fullscreen`. `size` and `margin` are self descriptive, but `fullscreen` is a boolean that allows you to specify if the loader will take up the fullscreen width and height of the page. This is particularly useful if you plan on implementing lazy loading for routes, need a fallback for a `<Suspense />` component high in the component tree, or just need to wait until everything is loaded before displaying a fullscreen component like our timesheets.
 
 </section>
