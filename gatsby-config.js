@@ -8,7 +8,7 @@ module.exports = {
             twitter: 'anthodair',
         },
     },
-    pathPrefix: '/help/hdsupport',
+    pathPrefix: '/help/hdsupport/docs',
     plugins: [
         {
             resolve: 'gatsby-plugin-layout',
