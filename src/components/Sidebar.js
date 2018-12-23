@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StaticQuery, graphql, Link } from 'gatsby';
 import styled from '@emotion/styled';
 
-const Sidebar = ({ focused, handleChange }) => {
+const Sidebar = () => {
     return (
         <StaticQuery
             query={graphql`
@@ -26,6 +26,7 @@ const Sidebar = ({ focused, handleChange }) => {
             `}
             render={data => {
                 const { edges } = data.allMarkdownRemark;
+                const { pathname } = location;
 
                 return (
                     <SidebarEl>
@@ -36,8 +37,9 @@ const Sidebar = ({ focused, handleChange }) => {
                                     <StyledLink
                                         key={index}
                                         to={edge.node.fields.slug}
-                                        onClick={() => handleChange(index)}
-                                        focused={index === focused}
+                                        focused={
+                                            pathname === edge.node.fields.slug
+                                        }
                                     >
                                         {edge.node.frontmatter.title}
                                     </StyledLink>
@@ -55,7 +57,6 @@ export default Sidebar;
 
 Sidebar.propTypes = {
     focused: PropTypes.number,
-    handleChange: PropTypes.func,
 };
 
 const SidebarEl = styled.aside`

@@ -13,26 +13,20 @@ const Header = ({ siteTitle, resetFocus }) => {
             <Container>
                 <Nav>
                     <Logo>
-                        <Link to="/" onClick={resetFocus}>
+                        <Link to="/">
                             <ITSLogo />
                             <span>{siteTitle}</span>
                         </Link>
                     </Logo>
                     <ul>
                         <li>
-                            <Link to="getting-started" onClick={resetFocus}>
-                                Docs
-                            </Link>
+                            <Link to="getting-started/">Docs</Link>
                         </li>
                         <li>
-                            <Link to="build" onClick={resetFocus}>
-                                Build for Production
-                            </Link>
+                            <Link to="build/">Build for Production</Link>
                         </li>
                         <li>
-                            <Link to="contact" onClick={resetFocus}>
-                                Contact
-                            </Link>
+                            <Link to="contact/">Contact</Link>
                         </li>
                     </ul>
                 </Nav>
@@ -43,7 +37,6 @@ const Header = ({ siteTitle, resetFocus }) => {
 
 Header.propTypes = {
     siteTitle: PropTypes.string,
-    resetFocus: PropTypes.func,
 };
 
 Header.defaultProps = {

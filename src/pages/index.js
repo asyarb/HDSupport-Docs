@@ -24,12 +24,12 @@ class Index extends Component {
                     </h6>
                     <p>
                         Welcome to the HDSupport documentation! My name is
-                        Anthony Yarbrough, and I'm the developer whoh worked on
+                        Anthony Yarbrough, and I'm the developer who worked on
                         the recent rewrite for HDSupport. Since I am no longer
                         actively employed at UH, I hope these docs provide a
                         solid starting point for any other staff or interested
                         student who wants to continue development of the
-                        HDSupport singe-page-application (SPA).
+                        HDSupport single-page-application (SPA).
                     </p>
                     <h3>Navigation</h3>
                     <p>
